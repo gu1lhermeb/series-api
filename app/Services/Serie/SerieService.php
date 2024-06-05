@@ -37,9 +37,12 @@ class SerieService
     public function store(array $data)
     {
         try {
+            DB::beginTransaction();
             $serie = $this->serieRepository->store($data);
+            DB::commit();
             return $serie;
         } catch (Exception $exception) {
+            DB::rollBack();
             throw $exception;
         }
     }
@@ -47,9 +50,12 @@ class SerieService
     public function update(int $id, array $data)
     {
         try {
+            DB::beginTransaction();
             $serie = $this->serieRepository->updateById($data, $id);
+            DB::commit();
             return $serie;
         } catch (Exception $exception) {
+            DB::rollBack();
             throw $exception;
         }
     }
@@ -57,9 +63,12 @@ class SerieService
     public function destroy(int $id)
     {
         try {
+            DB::beginTransaction();
             $serie = $this->serieRepository->deleteById($id);
+            DB::commit();
             return $serie;
         } catch (Exception $exception) {
+            DB::rollBack();
             throw $exception;
         }
     }

@@ -8,7 +8,7 @@ abstract class BaseRepository
 
     public function getById(int $id)
     {
-        return $this->model->findOrFail($id)->first()->dd();
+        return $this->model->findOrFail($id)->first();
     }
 
     public function all()
