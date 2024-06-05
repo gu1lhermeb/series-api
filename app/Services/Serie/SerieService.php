@@ -25,6 +25,16 @@ class SerieService
         }
     }
 
+    public function getById(int $id)
+    {
+        try {
+            $serie = $this->serieRepository->getById($id);
+            return $serie;
+        } catch (Exception $exception) {
+            throw $exception;
+        }
+    }
+
     public function store(array $data)
     {
         try {

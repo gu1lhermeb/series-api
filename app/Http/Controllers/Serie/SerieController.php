@@ -20,10 +20,20 @@ class SerieController extends Controller
     public function index()
     {
         try {
-            $serie = $this->serieService->index();
-            return response()->json($serie, 200);
+            $series = $this->serieService->index();
+            return response()->json($series, 200);
         } catch (Exception $exception) {
             return $exception->getMessage();
+        }
+    }
+
+    public function showById(int $id)
+    {
+        try {
+            $serie = $this->serieService->getById($id);
+            return response()->json($serie, 200);
+        } catch (Exception $exception) {
+
         }
     }
 
