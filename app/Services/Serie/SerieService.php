@@ -34,4 +34,14 @@ class SerieService
             throw $exception;
         }
     }
+
+    public function update(int $id, array $data)
+    {
+        try {
+            $serie = $this->serieRepository->updateById($data, $id);
+            return $serie;
+        } catch (Exception $exception) {
+            throw $exception;
+        }
+    }
 }

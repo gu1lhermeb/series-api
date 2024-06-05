@@ -6,6 +6,7 @@ use Exception;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Serie\PostStoreSerieRequest;
+use App\Http\Requests\Serie\PutUpdateSerieRequest;
 use App\Services\Serie\SerieService;
 
 class SerieController extends Controller
@@ -32,6 +33,17 @@ class SerieController extends Controller
             $data = $request->validated();
             $serie = $this->serieService->store($data);
             return response()->json($serie, 201);
+        } catch (Exception $exception) {
+            return $exception->getMessage();
+        }
+    }
+
+    public function update(int $id, PutUpdateSerieRequest $request)
+    {
+        try {
+            $data = $request->validated();
+            $serie = $this->serieService->update($id, $data);
+            return response()->json($serie, 200);
         } catch (Exception $exception) {
             return $exception->getMessage();
         }
