@@ -15,6 +15,6 @@ class Serie extends Model
 
     public function episodes()
     {
-        $this->hasMany(Serie::class);
+        return $this->hasMany(Episode::class);
     }
 }
