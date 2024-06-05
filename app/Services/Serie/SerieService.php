@@ -28,8 +28,7 @@ class SerieService
     public function getById(int $id)
     {
         try {
-            $serie = $this->serieRepository->getById($id);
-            return $serie;
+            return $this->serieRepository->getById($id);
         } catch (Exception $exception) {
             throw $exception;
         }
@@ -49,6 +48,16 @@ class SerieService
     {
         try {
             $serie = $this->serieRepository->updateById($data, $id);
+            return $serie;
+        } catch (Exception $exception) {
+            throw $exception;
+        }
+    }
+
+    public function destroy(int $id)
+    {
+        try {
+            $serie = $this->serieRepository->deleteById($id);
             return $serie;
         } catch (Exception $exception) {
             throw $exception;

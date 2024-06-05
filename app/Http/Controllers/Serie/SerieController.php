@@ -33,7 +33,7 @@ class SerieController extends Controller
             $serie = $this->serieService->getById($id);
             return response()->json($serie, 200);
         } catch (Exception $exception) {
-
+            return $exception->getMessage();
         }
     }
 
@@ -53,6 +53,16 @@ class SerieController extends Controller
         try {
             $data = $request->validated();
             $serie = $this->serieService->update($id, $data);
+            return response()->json($serie, 200);
+        } catch (Exception $exception) {
+            return $exception->getMessage();
+        }
+    }
+
+    public function destroy(int $id)
+    {
+        try {
+            $serie = $this->serieService->destroy($id);
             return response()->json($serie, 200);
         } catch (Exception $exception) {
             return $exception->getMessage();

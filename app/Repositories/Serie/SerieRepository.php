@@ -7,11 +7,16 @@ use App\Repositories\BaseRepository;
 
 class SerieRepository extends BaseRepository
 {
-    protected $model; 
+    protected $model;
 
     public function __construct(Serie $serieModel)
     {
         $this->model = $serieModel;
+    }
+
+    public function getById(int $id)
+    {
+        return $this->model->where('id', $id)->first();
     }
 
 }

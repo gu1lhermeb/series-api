@@ -5,10 +5,10 @@ namespace App\Repositories;
 abstract class BaseRepository
 {
     protected $model;
-    
+
     public function getById(int $id)
     {
-        return $this->model->findOrFail($id)->first();
+        return $this->model->findOrFail($id)->first()->dd();
     }
 
     public function all()
